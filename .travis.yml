@@ -1,0 +1,21 @@
+sudo: false
+dist: trusty
+install:
+- wget -q "https://github.com/gohugoio/hugo/releases/download/v0.51/hugo_0.51_Linux-64bit.tar.gz"
+  -O "hugo.tar.gz"
+- tar -xzf hugo.tar.gz
+script:
+- "./hugo"
+deploy:
+  provider: pages
+  repo: dineshba/dineshba.github.io
+  target-branch: master
+  skip_cleanup: true
+  local_dir: public
+  github_token: "$GITHUB_TOKEN"
+  keep-history: true
+  on:
+    branch: master
+env:
+  global:
+    secure: "PYphkalYCycRAqGovgBZLP9r8EGZjhku9pGQAn9drtoZnQVFI55GasOZDytD6P7vW0PBaon0goqYS4ZpuOsF7WXudD/gRwnYZr0bPDMVeilmAo1zox99cLwPnli/n+Cy73MO92SLzvbs4i5iIgirp3WiOZRsma8VYrOKZj9P3eNcb0ASletF2xqbcQYHRvjcHkJ8+oTrn6sr+kpnCixneNPalfCGBevssQrw7w1mZyu0I3mAefDvbIoEbgM1ze8xjMO2/ycvA2Xib3qskUJQ2szo0W0cWKkGA2ulMtserWLfNzpa7pEYaKuJBXOOZefXD1J+hwyo5IdJ2hVcyOUXbjQZKkMOACLv0drJNTWpdy0tfvraWzTn8VD5/iFOoz73DqV812thPJ9/UWnhrJGEKTJBe5iSiGrJpyRZFy8+d88cXbr/DVd+pk6u2Dy9z3mpr1tdHfhT06KNJvf5OFXg9UxaJyEfBzLe9+unyfG/B6vpsVRaLIjLZlLrAOu40iqTje4FfjXbEP3xqWp59h0zbYDvoBH4YdVRencgJ0HayBWz9hElxaq8lmgUBUHsZmOsSa4utARRrTFZm0iB77nqzXXtVwMr4N5pDRHLBrxWJFEBXNiwUCkJZdIIOku0gu+X8AHjbgYIDillV41FLcgPoZhuspCS44REL6s9lKV0Jzo="
