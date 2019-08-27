@@ -1,20 +1,22 @@
 ---
 title: "About"
 date: 2019-08-26T20:05:50+05:30
-draft: true
 ---
+### AboutMe
 
-## AboutMe
 I am a full stack developer. Worked/Working on technologies such as
+
 - Devops
-    - Docker
     - Kubernetes
+    - Terraform
+    - Docker
+    - Helm
     - Vagrant
 - Mobile
     - iOS
     - Flutter
     - Android
-    - ionic
+    - Ionic
     - React Native (Basics)
 - Web
     - Angular
@@ -24,5 +26,8 @@ I am a full stack developer. Worked/Working on technologies such as
 - Backend
     - Elixir
     - Java
-    - node (basics)
-
+    - Node
+- CI/CD
+    - GoCD
+    - Gitlab
+    - Travis
