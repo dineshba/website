@@ -1,4 +1,15 @@
 baseURL = "https://dineshba.github.io"
 languageCode = "en-us"
-title = "Today I Learnt By Dinesh"
-theme = "tale"
+title = "Today I Learnt"
+theme = "hyde"
+
+[params]
+  themeColor = "theme-base-0d"
+  description = "Website to share my learnings"
+[Menus]
+  main = [
+      {Name = "Github", URL = "https://github.com/dineshba/"},
+      {Name = "LinkedIn", URL = "https://www.linkedin.com/in/dineshba/"},
+      {Name = "Stackoverflow", URL = "https://stackoverflow.com/users/5305962/dinesh-balasubramanian"},
+      {Name = "Thoughtworks", URL= "https://www.thoughtworks.com/profiles/dinesh-b"}
+      ]
