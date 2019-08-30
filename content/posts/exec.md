@@ -1,9 +1,9 @@
 ---
-title: "Exec"
+title: "Super cool exec command"
 date: 2019-08-27T22:56:45+05:30
 ---
 
-## exec (buildin command)
+## exec (built-in command)
 
 We can use exec for two use cases (as far as I learned today :-P)
 
