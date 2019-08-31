@@ -4,7 +4,7 @@ date: 2019-08-31T00:50:33+05:30
 ---
 
 ### Backbone of my website:
-I am using [hugo](https://gohugo.io/) to build this website. Thanks to [Aswin Karthik](https://aswinkarthik.dev/) for his [blog](https://aswinkarthik.dev/posts/setting-up/) by which I setup this website. Just write markdown files and push, and your website is ready. So cool !!!.
+I am using [hugo](https://gohugo.io/) to build this website. Thanks to [Aswin Karthik](https://aswinkarthik.dev/) for his [blog](https://aswinkarthik.dev/posts/setting-up/) by which I setup this website. Just write markdown files and push, and [travis-ci](https://travis-ci.org/) will publish your website. So cool !!!.
 
 There are lot of themes available [here](https://themes.gohugo.io/). After some search, I landed to current theme which is [hyde](https://github.com/spf13/hyde). I really liked the theme and it saved lot of my time. This theme gives lot of options to customize our website. I struggled 5 to 10 min to find all hidden options.
 
