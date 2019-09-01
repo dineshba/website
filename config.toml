@@ -2,7 +2,7 @@ baseURL = "https://dineshba.github.io/"
 languageCode = "en-us"
 title = "Today I Learnt"
 theme = "hyde"
-disqusShortname = "tnnQkJ3MKi"
+googleAnalytics = "UA-146789724-1"
 
 [params]
   themeColor = "theme-base-0d"
