@@ -19,4 +19,4 @@ I would love to quickly share my OSS Journey. I will keep it very short. I am wr
 
 > Note: You have to be logged in github to see the above pr and issue links
 
-**Hope you are able to see good different in a year time.** [hacktoberfest](https://hacktoberfest.digitalocean.com/) is gonna start. Are you ready to feel the change like above?
+**Hope you are able to see good difference in a year time.** [hacktoberfest](https://hacktoberfest.digitalocean.com/) is gonna start. Are you ready to feel the change like above?
