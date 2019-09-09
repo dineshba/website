@@ -3,7 +3,7 @@ title: "My OSS Journey"
 date: 2019-09-04T22:45:25+05:30
 ---
 
-I would love to quickly share my OSS Journey. I will keep it very short. I am writing this now (on September 2019), because I gonna celebrate `my first anniversary of my OSS journey` by this October.
+I would love to quickly share my OSS Journey. I will keep it very short. I am writing this now (on September 2019), because I am gonna celebrate `my first anniversary of my OSS journey` by this October.
 
 | Before one year (October 2018) | Now (September 2019) |
 | ----- | ----- |
