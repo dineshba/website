@@ -83,7 +83,7 @@ How will you switch git branch? (select one branch from many)
 
 ##### Fzf way:
 ```
-alias gcx="git checkout \$(git branch -a | sed 's/remotes\/origin\///' | grep -v '\*|HEAD' | sort |uniq | fzf --select-1)"
+alias gcx="git checkout \$(git branch -a | sed -E 's/remotes\/([a-zA-Z-]*\/)//' | grep -v '\*|HEAD' | sort |uniq | fzf --select-1)"
 gcx
 ```
 > Note: try in your terminal and feel the difference
