@@ -1,5 +1,5 @@
 ---
-title: "Resolve_vs_Reach"
+title: "Resolve vs Reach"
 date: 2019-12-10T08:46:06+05:30
 ---
 
