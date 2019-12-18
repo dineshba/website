@@ -11,14 +11,14 @@ Ping sends the `ICMP Echo` to the given IP and waits for the `ICMP Echo Reply`. 
 So if we didn't get `Echo Reply` can we assume that given IP is not reachable. **No, it is not true**.
 
 #### Reasons for ping not working:
-1) ping command has been disabled for that network (by the syadmin)
-2) You have no Internet connection/network connectivity
-3) A firewall can filter ICMP Echo messages
-4) IP is not actually reachable
+    1) ping command has been disabled for that network (by the syadmin)
+    2) You have no Internet connection/network connectivity
+    3) A firewall can filter ICMP Echo messages
+    4) IP is not actually reachable
 
 #### Then, how to test the reachability of an IP
-1) If you know the port, 
-    1) `curl IP:PORT` (hope, get call shouldn't be a problem) (Layer 7)
-    2) `telnet IP PORT` once connected, we cannot disconnect (Layer 4)
-2) If you don't know the port,
-    1) `traceroute IP`
+    1) If you know the port,
+        1) `curl IP:PORT` (hope, get call shouldn't be a problem) (Layer 7)
+        2) `telnet IP PORT` once connected, we cannot disconnect (Layer 4)
+    2) If you don't know the port,
+        1) `traceroute IP`
