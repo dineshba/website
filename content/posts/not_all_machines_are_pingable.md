@@ -18,7 +18,7 @@ So if we didn't get `Echo Reply` can we assume that given IP is not reachable. *
 
 #### Then, how to test the reachability of an IP
     1) If you know the port,
-        1) `curl IP:PORT` (hope, get call shouldn't be a problem) (Layer 7)
-        2) `telnet IP PORT` once connected, we cannot disconnect (Layer 4)
+        1) `curl IP:PORT` (hope, get call shouldn't be a problem)
+        2) `telnet IP PORT` once connected, we cannot disconnect
     2) If you don't know the port,
         1) `traceroute IP`
