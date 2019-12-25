@@ -5,20 +5,14 @@ date: 2019-12-25T13:10:48+05:30
 
 In oneliner, minikube is a tool that makes it easy to run Kubernetes locally.
 
-In `kube-system` namespace, we can result like below,
+In `kube-system` namespace, we can see result like below,
 
 ```bash
-$ kubectl get pods -n kube-system -o name
-pod/coredns-5c98db65d4-n9vvl
-pod/coredns-5c98db65d4-p2hk7
+$ kubectl get pods -n kube-system -o name -l tier=control-plane
 pod/etcd-minikube
-pod/kube-addon-manager-minikube
 pod/kube-apiserver-minikube
 pod/kube-controller-manager-minikube
-pod/kube-proxy-zkw85
-pod/kube-scheduler-minikube
-pod/nginx-ingress-controller-657fd58d97-gp6rl
-pod/storage-provisioner
+pod/kube-scheduler-minikube #scheduler is running, but who scheduled ?
 ```
 
 Whenever we create pod(rs/deployments/sts/ds), `Scheduler` is the one which schedules this pods into any of the available node (in minikube, there is only one).
