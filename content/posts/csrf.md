@@ -11,7 +11,7 @@ An HTTP cookie (web cookie, browser cookie) is a small piece of data that a **se
 
 #### Cross-Site Request Forgery (CSRF)
 
-Lets say you logged into the bank website and the back website uses cookies to store the user authentication details (say sessionId or oauth tokens)
+Lets say you logged into the bank website and the bank website uses cookies to store the user authentication details (say sessionId or oauth tokens)
 
 - Lets say the attacker sends a mail which contains hidden javascript to send ajax requests to the bank website and the victim opens it
 - Lets say the attacker creates a website which will to send ajax requests to the bank website and the victim opens that website
