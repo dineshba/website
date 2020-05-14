@@ -28,7 +28,7 @@ For read only requests, the malicious website will receive the data from the ban
 
 #### One of the easy way to protect:
 
-##### Simplest fix
+#### Simplest fix
 
 Use `SameSite=Strict/Lax` cookies
 
@@ -40,6 +40,8 @@ Cookies are allowed to be sent with top-level navigations and will be sent along
 
 ##### Disclaimer:
 A current limitation of same-site Cookies is that not all modern browsers support them
+
+#### Another fix
 
 ##### Can javascript read cookies ?
 
