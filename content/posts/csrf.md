@@ -24,7 +24,7 @@ Only to the **state chaging** requests which means generally POST/PUT/PATCH
 
 ##### Why it is not applicable to read-only requests ?
 
-For read only requests, the malicious website will receive the data from the bank site. It cannot do anything with that <have some doubts here>
+For read only requests, the malicious website will receive the data from the bank site. It cannot do anything with that.
 
 #### One of the easy way to protect:
 
@@ -46,7 +46,7 @@ A current limitation of same-site Cookies is that not all modern browsers suppor
 ##### Can javascript read cookies ?
 
 - For `httpOnly=true` cookie (httpOnly is one of the property of the cookie), javascript can **never** read the cookie. But the browser can send it to the same server which provided it
-- For `httpOnly=false` cookie, **only javascript running in the same domain can read the cookie**. Eg: cookie of `www.myback.com` can be read by the javascript running in `www.myback.com` page.
+- For `httpOnly=false` cookie, **only javascript running in the same domain can read the cookie**. Eg: cookie of `www.mybank.com` can be read by the javascript running in `www.mybank.com` page.
 
 So we can create a `random string` from the backend and send to the browser as the `httpOnly=false` cookie (say, name of the cookie `CSRF-TOKEN`). We can write javascript to read the cookie and add as **header** to all the `state changing` requests (say, the header name is `X-CSRF-TOKEN`).
 
