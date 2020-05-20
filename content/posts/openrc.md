@@ -38,6 +38,6 @@ $ openrc # which opens my jenkins pipeline url for the master branch
 ```
 
 #### Why not [git-open](https://github.com/paulirish/git-open) ?
-- I used it a lot when my pipeline is in Gitlab. When we are having pipeline in different url other than git url, git-open is not very useful.
+- I used it a lot when my pipelines were in Gitlab. When we are having pipelines in different url other than git url, git-open is not very useful.
 
 So started using this `alias` which makes my life easily.
