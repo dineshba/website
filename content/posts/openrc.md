@@ -32,6 +32,8 @@ $ cat .openrc
 http://myjenkins.com/job/my-repo/job/master/
 ```
 
+> Note: Url should start with http:// or https:// so that `open` command opens in default browser.
+
 So after pushed, I will do 
 ```sh
 $ openrc # which opens my jenkins pipeline url for the master branch
@@ -41,3 +43,21 @@ $ openrc # which opens my jenkins pipeline url for the master branch
 - I used it a lot when my pipelines were in Gitlab. When we are having pipelines in different url other than git url, git-open is not very useful.
 
 So started using this `alias` which makes my life easily.
+
+#### Improvements in script/alias:
+
+Use grep/[ripgrep](https://github.com/BurntSushi/ripgrep) instead of cat to remove the empty files
+```sh
+$ alias openrc="grep . .openrc | xargs -I{} open {}"
+$ # or
+$ alias openrc="rg . .openrc | xargs -I{} open {}"
+```
+
+Use [fzf](https://github.com/junegunn/fzf) to select from mutilple urls
+
+```sh
+$ alias openrc="grep . .openrc | fzf --select-1 -m | xargs -I{} open {}"
+```
+
+- Auto select if only one url present (--select-1 flag)
+- Select more than one url using <TAB> (-m flag)
