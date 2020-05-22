@@ -46,21 +46,21 @@ So started using this `alias` which makes my life easily.
 
 #### Improvements in script/alias:
 
-1. Use grep/[ripgrep](https://github.com/BurntSushi/ripgrep) instead of cat to remove the empty files
+- Use grep/[ripgrep](https://github.com/BurntSushi/ripgrep) instead of cat to remove the empty files
 ```sh
 $ alias openrc="grep . .openrc | xargs -I{} open {}"
 $ # or
 $ alias openrc="rg . .openrc | xargs -I{} open {}"
 ```
 
-2. Use [fzf](https://github.com/junegunn/fzf) to select from mutilple urls
-- Auto select if only one url present (--select-1 flag)
-- Select more than one url using <TAB> (-m flag)
+- Use [fzf](https://github.com/junegunn/fzf) to select from mutilple urls
+    - Auto select if only one url present (--select-1 flag)
+    - Select more than one url using <TAB> (-m flag)
 ```sh
 $ alias openrc="grep . .openrc | fzf --select-1 -m | xargs -I{} open {}"
 ```
 
-3. Consider only the valid urls (starts with http(s))
+- Consider only the valid urls (starts with http(s))
 
 ```sh
 $ alias openrc="grep ^http .openrc | fzf --select-1 -m | xargs -I{} open {}"
