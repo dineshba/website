@@ -54,13 +54,11 @@ $ alias openrc="rg . .openrc | xargs -I{} open {}"
 ```
 
 2. Use [fzf](https://github.com/junegunn/fzf) to select from mutilple urls
-
+- Auto select if only one url present (--select-1 flag)
+- Select more than one url using <TAB> (-m flag)
 ```sh
 $ alias openrc="grep . .openrc | fzf --select-1 -m | xargs -I{} open {}"
 ```
-
-- Auto select if only one url present (--select-1 flag)
-- Select more than one url using <TAB> (-m flag)
 
 3. Consider only the valid urls (starts with http(s))
 
