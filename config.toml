@@ -1,6 +1,6 @@
 baseURL = "https://dineshba.github.io/"
 languageCode = "en-us"
-title = "Today I Learnt"
+title = "Dinesh's Blog"
 theme = "hyde"
 googleAnalytics = "UA-146789724-1"
 
