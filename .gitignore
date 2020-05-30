@@ -1,3 +1,6 @@
 .talismanrc
 public
 resources
+themes
+
+.*rc
