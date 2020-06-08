@@ -3,7 +3,7 @@ languageCode = "en-us"
 title = "Dinesh's Blog"
 theme = "hyde"
 googleAnalytics = "UA-146789724-1"
-disqusShortname = "disqus_tnnQkJ3MKi"
+disqusShortname = "https-dineshba-github-io"
 
 [params]
   themeColor = "theme-base-0d"
