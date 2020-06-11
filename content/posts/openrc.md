@@ -65,3 +65,8 @@ $ alias openrc="grep . .openrc | fzf --select-1 -m | xargs -I{} open {}"
 ```sh
 $ alias openrc="grep ^http .openrc | fzf --select-1 -m | xargs -I{} open {}"
 ```
+
+- Sometimes, I have to think to between typing `openrc or git open`. So removing that unnecessary thinking by below thinking 😛. Appending the output of `git open` to `.openrc` so that we can always type `openrc`
+```sh
+$ alias openrc="echo \$(git open -p) | cat .openrc - |rg ^http | fzf --select-1 -m | xargs -I{} open {}"
+```
