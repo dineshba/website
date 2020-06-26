@@ -12,6 +12,7 @@ Kubernetes will not store the user details.
     - Create CA certificates with user name and sign it with kubernetes
 
 - Using external systems
+    - As it is deligating this authentication to external systems, we can easily onboard users into the kubernetes. Eg: Lets say your organization have Okta based SSO, then you can easily integrate that to kubernetes
 
 ![auth.png](/auth.png)
 
@@ -67,7 +68,7 @@ rules:
   - list
 EOF
 ```
-Create podReader role binding for the user `dinesh` and for service account `dinesh`
+Create a role binding for the user `dinesh` and for service account `dinesh` with role `podReader`.
 ```
 cat <<EOF | kubectl apply -f -
 ---
@@ -89,3 +90,5 @@ subjects:
   namespace: default
 EOF
 ```
+
+Once the user is authenticated, based on the role, they/it can access the resource.
