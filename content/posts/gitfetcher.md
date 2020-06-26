@@ -10,10 +10,12 @@ Because I have **automated** it.
 Highly inspired from [bash-git-prompt](https://github.com/magicmonty/bash-git-prompt). If you are already using it (or equivalent of it), below custom script may be useful to you.
 
 **Problem Statement:** 
-1) Whenever I jump into the git directory, I do `git pull`
-2) And sometimes I forget to do it which might create conflicts
+
+- Whenever I jump into the git directory, I do `git pull`
+- And sometimes I forget to do it which might create conflicts
 
 So created a script, which will do `git fetch`
+
 - whenever I jump into git directory
 - if we havent fetched for some time (say 5 min)
 
