@@ -13,7 +13,7 @@ Kubernetes will not store the user details.
 
 - Using external systems
 
-![auth.png](auth.png)
+![auth.png](/auth.png)
 
 How kubernetes components are talking securely ?
 - Using CA certificates
@@ -33,7 +33,7 @@ Then how we can give permission for machine/process/bot to talk to kubernetes ?
     - This serviceAccount will be stored in kubernetes (etcd)
     - We can easily create serviceAccount `kubectl create sa <sa-name>`
     - It will automatically create a secret (jwt token), using this token we can talk to kubernetes
-![sa.png](sa.png)
+![sa.png](/sa.png)
 
 How authorization is happening in kubernetes ?
 - Using RBAC
