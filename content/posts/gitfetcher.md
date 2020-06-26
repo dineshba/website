@@ -19,7 +19,7 @@ So created a script, which will do `git fetch`
 - whenever I jump into git directory
 - if we havent fetched for some time (say 5 min)
 
-```bash
+```sh
 $ cat /path/to/gitfetcher.sh
 #!/usr/bin/env bash
 
@@ -57,7 +57,7 @@ fi
 
 And include the above script as `prompter` in your bash/zsh/fish configfile like
 
-```bash
+```sh
 ### Fetch in background
 export PATH="$PATH:path/to/gitfetcher.sh" # configure the path
 export PROMPT_COMMAND="gitfetcher.sh; $PROMPT_COMMAND"
