@@ -1,7 +1,6 @@
 ---
 title: "Gitfetcher"
 date: 2020-06-26T15:38:55+05:30
-draft: true
 ---
 
 #### Why I will not do `git fetch` or `git pull` ?
