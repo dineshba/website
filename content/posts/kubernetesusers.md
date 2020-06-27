@@ -47,7 +47,7 @@ Kubernetes will not store the user details.
             - eg: readonlyRole + dinesh or readonlyRole + sa
             - rolebinding can be for a user or for a service account
         - ClusterRole (Same as Role but for all namespaces)
-        - ClusterRoleBinding (Same as Role but for all namespaces)
+        - ClusterRoleBinding (Same as RoleBinding but for all namespaces)
 
 ##### Eg:
 Create a role to get,list,watch pods
