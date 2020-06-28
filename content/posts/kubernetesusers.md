@@ -12,6 +12,8 @@ Kubernetes will not store the user details.
     - Create CA certificates with user name and sign it with kubernetes
     - CA certificate will have the user data (not the kubernetes). Kubernetes will only validate the certificate.
 
+![ca.png](/ca.png)
+
 - Using external systems
     - As it is deligating this authentication to external systems, we can **easily onboard users into the kubernetes**. Eg: Lets say your organization have Okta based SSO, then you can easily integrate that to kubernetes and onboard all employees to kubernetes
 
@@ -28,7 +30,7 @@ Kubernetes will not store the user details.
 
 #### Can we use CA method to authenticate machines to talk to kubernetes ?
 - Yes we can do it
-- But, it is very difficult to invalidate the CA certificate. So if cert is leaked, in order to invalidate, we have to reset CA authority in master and change all the CA certificates.
+- Same as discussed above. Difficult to invalidate the certificate.
 
 ####  Then how we can give permission for machine/process/bot to talk to kubernetes ?
 - We have another type of special user called `ServiceAccount`
