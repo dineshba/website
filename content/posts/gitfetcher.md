@@ -61,10 +61,9 @@ And include the above script as `prompter` in your bash/zsh/fish configfile like
 
 ```sh
 ### Fetch in background
-export PATH="$PATH:path/to/gitfetcher.sh" # configure the path
+export PATH="$PATH:path/to/gitfetcher.sh" # configure gitfetcher.sh in the path
 export PROMPT_COMMAND="gitfetcher.sh; $PROMPT_COMMAND"
 ### Fetch in background
 ```
-
 
 You can find the source code of above script [here](https://github.com/dineshba/dotfiles/blob/master/gitfetcher.sh) and [sample](https://github.com/dineshba/dotfiles/blob/master/.bashrc#L33-L36) to see how I configured in my bashrc file
