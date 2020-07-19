@@ -7,6 +7,8 @@ date: 2020-06-26T15:38:55+05:30
 
 Because I have **automated** it.
 
+![gitfetcher.gif](/gitfetcher.gif)
+
 Highly inspired from [bash-git-prompt](https://github.com/magicmonty/bash-git-prompt). If you are already using it (or equivalent of it), below custom script may be useful to you.
 
 **Problem Statement:** 
