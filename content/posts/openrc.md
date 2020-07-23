@@ -38,6 +38,8 @@ fi
 
 Have a file `.openrc` with list of urls in your repo directory.
 
+![openrc.gif](/openrc.gif)
+
 ##### My usecase:
 Want to see the result of jenkins pipeline after `git push`
 So, my `.openrc` will be like
