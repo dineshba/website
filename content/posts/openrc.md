@@ -34,7 +34,7 @@ else
 fi
 ```
 
-> Note: Above script depends on [git-open](https://github.com/paulirish/git-open)
+> Note: Above script depends on [git-open](https://github.com/paulirish/git-open), [fzf](https://github.com/junegunn/fzf), [ripgrep](https://github.com/BurntSushi/ripgrep) (replace rg with grep if you want)
 
 Have a file `.openrc` with list of urls in your repo directory.
 
