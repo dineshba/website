@@ -17,9 +17,24 @@ To be generic, you want to open a particular url after an action. How can we ach
 
 #### Solution:
 
+Put this openrc file in the path (so that we can invoke this from anywhere) Eg: `/usr/local/bin/openrc`
+
 ```sh
-alias openrc="cat .openrc | xargs -I{} open {}" # in your .bashrc/.zshrc file
+$ cat /usr/local/bin/openrc
+#!/usr/bin/env bash
+
+gitUrl=$(git open -p)
+fileContent=$gitUrl
+file=".openrc"
+if [ -f "$file" ]
+then
+	echo $gitUrl | cat $file - |rg ^http | fzf --select-1 -m | xargs -I{} open {}
+else
+    open $gitUrl
+fi
 ```
+
+> Note: Above script depends on [git-open](https://github.com/paulirish/git-open)
 
 Have a file `.openrc` with list of urls in your repo directory.
 
@@ -39,12 +54,18 @@ So after pushed, I will do
 $ openrc # which opens my jenkins pipeline url for the master branch
 ```
 
-#### Why not [git-open](https://github.com/paulirish/git-open) ?
+#### Why not plain [git-open](https://github.com/paulirish/git-open) ?
 - I used it a lot when my pipelines were in Gitlab. When we are having pipelines in different url other than git url, git-open is not very useful.
 
-So started using this `alias` which makes my life easily.
+So started using this `script` which makes my life easily.
 
-#### Improvements in script/alias:
+#### How the script evolved of the script/alias:
+
+- Initial version:
+
+```sh
+alias openrc="cat .openrc | xargs -I{} open {}"
+```
 
 - Use grep/[ripgrep](https://github.com/BurntSushi/ripgrep) instead of cat to remove the empty files
 ```sh
@@ -70,3 +91,5 @@ $ alias openrc="grep ^http .openrc | fzf --select-1 -m | xargs -I{} open {}"
 ```sh
 $ alias openrc="echo \$(git open -p) | cat .openrc - |rg ^http | fzf --select-1 -m | xargs -I{} open {}"
 ```
+
+Note: The above script will print the error message if the `.openrc` file is not found. But still it will open the git url in the repo. To fix this, I moved from alias to script.
