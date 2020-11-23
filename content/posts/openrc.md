@@ -17,7 +17,9 @@ To be generic, you want to open a particular url after an action. How can we ach
 
 #### Solution:
 
-Put this openrc file in the path (so that we can invoke this from anywhere) Eg: `/usr/local/bin/openrc`
+Put this openrc script file in the path (so that we can invoke this from anywhere) Eg: `/usr/local/bin/openrc`
+
+> Note: Below script depends on [git-open](https://github.com/paulirish/git-open), [fzf](https://github.com/junegunn/fzf), [ripgrep](https://github.com/BurntSushi/ripgrep) (replace rg with grep if you want)
 
 ```sh
 $ cat /usr/local/bin/openrc
@@ -33,8 +35,6 @@ else
     open $gitUrl
 fi
 ```
-
-> Note: Above script depends on [git-open](https://github.com/paulirish/git-open), [fzf](https://github.com/junegunn/fzf), [ripgrep](https://github.com/BurntSushi/ripgrep) (replace rg with grep if you want)
 
 Have a file `.openrc` with list of urls in your repo directory.
 
@@ -61,7 +61,7 @@ $ openrc # which opens my jenkins pipeline url for the master branch
 
 So started using this `script` which makes my life easily.
 
-#### How the script evolved of the script/alias:
+#### How the script evolved:
 
 - Initial version:
 
