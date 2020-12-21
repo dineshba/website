@@ -50,7 +50,7 @@ So we created a automation to do this for us using **terraform** (yes, terraform
 
 Lets talk using terraform. Even if you dont know about terraform, you should be able to understand things a high level.
 
-1. Declare the [github terraform provider](https://www.terraform.io/docs/providers/github/)
+- Declare the [github terraform provider](https://www.terraform.io/docs/providers/github/)
 
 ```tf
 provider "github" {
@@ -60,8 +60,7 @@ provider "github" {
 ```
 with this, terraform knows how to interact with github apis.
 
-
-2. Specify the version
+- Specify the version
 
 ```tf
 terraform {
@@ -73,28 +72,26 @@ terraform {
 ```
 > Note: Please use the latest version if you copying from here
 
-
-3. Define list of variables
+- Define list of variables
 
 ```tf
-variable "github_token" { # var used in step 1
+variable "github_token" { # var used in first step
   type = string
 }
 
-variable "github_organization" { # var used in step 1
+variable "github_organization" { # var used in first step
   type    = string
   default = "some-org"
 }
 
-variable "github_members" { # var used in step 4 and 7
+variable "github_members" { # var used in next steps
   type = list(string)
 
   default = ["dineshba"]
 }
 ```
 
-
-4. Invite user to your organization
+- Invite user to your organization
 
 ```tf
 resource "github_membership" "membership_for_users" {
@@ -103,12 +100,11 @@ resource "github_membership" "membership_for_users" {
   role     = "member"
 }
 ```
->Note: organization name and token to interact with github apis is given in step 1
+>Note: organization name and token to interact with github apis is given in first step
 
 If we run terraform plan and apply with above content, terraform will invite `dineshba` to join `some-org` github organisation
 
-
-5. Use a team in your organization if it is already present
+- Use a team in your organization if it is already present
 
 ```tf
 # use data-block to read team information, as team is already present
@@ -117,8 +113,7 @@ data "github_team" "some_team" {
 }
 ```
 
-
-6. Create a team if you want to create some-team for this use-case
+- Create a team if you want to create some-team for this use-case
 
 ```tf
 # use this resource-block to create/update team as team is already not present
@@ -137,20 +132,18 @@ resource "github_team_repository" "some_team_repo" {
 ```
 If we run terraform plan and apply with above content, terraform will create a team called `some-team` and provide pull access to this team members for the repo `some-repo`
 
-
-7. Add newly added person to this team
+- Add newly added person to this team
 
 ```tf
 resource "github_team_membership" "some_team_team_membership" {
   for_each = toset(var.github_members)
-  team_id  = data.github_team.some_team.id  # use resource instead of data if you are following step 6
+  team_id  = data.github_team.some_team.id  # use resource instead of data if team is created by terraform
   username = each.key
   role     = "member"
 }
 ```
 
-
-8. Thats all, do 
+- Thats all, do
 > Create github token and provide to terraform, so that terraform can do things on our behalf
 ```sh
 export TF_VAR_github_token=<your-personal-github-token-created-in-UI>
@@ -162,7 +155,6 @@ terraform plan
 terraform apply
 ```
 
-
-9. Add this steps to CI/CD to make things much more simple. I am not covering this as part of this blog
+- Add this steps to CI/CD to make things much more simple. I am not covering this as part of this blog
 
 Please try and share your feedbacks below
