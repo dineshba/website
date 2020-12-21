@@ -23,6 +23,7 @@ Example:
 Hope the above yaml explains the concept of **organization, teams and team-memberships** at high level
 
 So the steps will be:
+
 1. Add user to the organization (1 time per user)
 2. Create a team if needed or reuse the team (only 1 time)
 3. Give repo access to newly created team (only 1 time)
@@ -59,6 +60,7 @@ provider "github" {
 ```
 with this, terraform knows how to interact with github apis.
 
+
 2. Specify the version
 
 ```tf
@@ -69,7 +71,8 @@ terraform {
   }
 }
 ```
->Note: Please use the latest version if you copying from here
+> Note: Please use the latest version if you copying from here
+
 
 3. Define list of variables
 
@@ -90,6 +93,7 @@ variable "github_members" { # var used in step 4 and 7
 }
 ```
 
+
 4. Invite user to your organization
 
 ```tf
@@ -103,6 +107,7 @@ resource "github_membership" "membership_for_users" {
 
 If we run terraform plan and apply with above content, terraform will invite `dineshba` to join `some-org` github organisation
 
+
 5. Use a team in your organization if it is already present
 
 ```tf
@@ -111,6 +116,7 @@ data "github_team" "some_team" {
   slug = "some-team"
 }
 ```
+
 
 6. Create a team if you want to create some-team for this use-case
 
@@ -131,6 +137,7 @@ resource "github_team_repository" "some_team_repo" {
 ```
 If we run terraform plan and apply with above content, terraform will create a team called `some-team` and provide pull access to this team members for the repo `some-repo`
 
+
 7. Add newly added person to this team
 
 ```tf
@@ -141,6 +148,7 @@ resource "github_team_membership" "some_team_team_membership" {
   role     = "member"
 }
 ```
+
 
 8. Thats all, do 
 > Create github token and provide to terraform, so that terraform can do things on our behalf
@@ -153,6 +161,7 @@ terraform init
 terraform plan
 terraform apply
 ```
+
 
 9. Add this steps to CI/CD to make things much more simple. I am not covering this as part of this blog
 
