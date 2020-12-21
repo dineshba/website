@@ -1,5 +1,5 @@
 ---
-title: "Access management for git at scale"
+title: "Access management for github at scale"
 date: 2020-12-18T17:49:40+05:30
 ---
 
