@@ -25,6 +25,9 @@ jobs:
       
     - name: Copy files to dineshb.github.io repo
       run: |
+        ls -la
+        pwd
+        ls -la dineshb.github.io/
         cp -rf public/* dineshb.github.io/
     - name: Commit files
       run: |
