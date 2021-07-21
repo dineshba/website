@@ -16,24 +16,24 @@ jobs:
         tar -xzf hugo.tar.gz
         ./hugo
     
-    - name: Clone dineshb.github.io
+    - name: Clone dineshba.github.io
       run: git clone https://github.com/dineshba/dineshba.github.io
       
-    - name: Copy files to dineshb.github.io repo
+    - name: Copy files to dineshba.github.io repo
       run: |
         ls -la
         pwd
-        ls -la dineshb.github.io/
-        cp -rf public/* dineshb.github.io/
+        ls -la dineshba.github.io/
+        cp -rf public/* dineshba.github.io/
     - name: Commit files
       run: |
-        cd dineshb.github.io/
+        cd dineshba.github.io/
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git commit -am "Deploy dineshba/dineshba.github.io"
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
-        directory: dineshb.github.io/
+        directory: dineshba.github.io/
         github_token: ${{ secrets.PUSH_TOKEN }}
         branch: master
