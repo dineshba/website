@@ -34,7 +34,7 @@ jobs:
         git commit -am "Deploy dineshba/dineshba.github.io"
     - name: Push changes
       uses: ad-m/github-push-action@master
-      directory: dineshb.github.io/
       with:
+        directory: dineshb.github.io/
         github_token: ${{ secrets.PUSH_TOKEN }}
         branch: master
