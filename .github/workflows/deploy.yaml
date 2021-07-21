@@ -1,0 +1,40 @@
+name: 'Deploy'
+
+on: [push]
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Generate hugo files
+      run: |
+        wget -q "https://github.com/gohugoio/hugo/releases/download/v0.57.2/hugo_0.57.2_Linux-64bit.tar.gz" -O "hugo.tar.gz"
+        tar -xzf hugo.tar.gz
+        ./hugo
+    
+    - name: Clone dineshb.github.io
+      uses: actions/checkout@v2
+      with:
+        repository: 'https://github.com/dineshba/dineshba.github.io/'
+        fetch-depth: 0
+        persist-credentials: false
+      
+    - name: Copy files to dineshb.github.io repo
+      run: |
+        cp -rf public/* dineshb.github.io/
+    - name: Commit files
+      run: |
+        cd dineshb.github.io/
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -am "Deploy dineshba/dineshba.github.io"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      directory: dineshb.github.io/
+      with:
+        github_token: ${{ secrets.PUSH_TOKEN }}
+        branch: master
