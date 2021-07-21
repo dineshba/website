@@ -19,7 +19,7 @@ jobs:
     - name: Clone dineshb.github.io
       uses: actions/checkout@v2
       with:
-        repository: 'https://github.com/dineshba/dineshba.github.io/'
+        repository: 'dineshba/dineshba.github.io'
         fetch-depth: 0
         persist-credentials: false
       
