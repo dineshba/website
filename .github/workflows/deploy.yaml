@@ -10,6 +10,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Update theme
+      run: |
+        git submodule init
+        git submodule update
+
     - name: Generate hugo files
       run: |
         wget -q "https://github.com/gohugoio/hugo/releases/download/v0.86.0/hugo_0.86.0_Linux-64bit.tar.gz" -O "hugo.tar.gz"
@@ -20,19 +25,15 @@ jobs:
       run: git clone https://github.com/dineshba/dineshba.github.io
       
     - name: Copy files to dineshba.github.io repo
-      run: |
-        ls -la
-        pwd
-        ls -la dineshba.github.io/
-        cp -rf public/* dineshba.github.io/
+      run: cp -rf public/* dineshba.github.io/
+
     - name: Commit files
       run: |
         cd dineshba.github.io/
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git status
         git add .
-        git commit -m "Deploy dineshba/dineshba.github.io"
+        git commit -m "Deploy '${{ github.event.head_commit.message }}'"
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
