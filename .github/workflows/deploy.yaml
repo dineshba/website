@@ -12,7 +12,7 @@ jobs:
 
     - name: Generate hugo files
       run: |
-        wget -q "https://github.com/gohugoio/hugo/releases/download/v0.57.2/hugo_0.57.2_Linux-64bit.tar.gz" -O "hugo.tar.gz"
+        wget -q "https://github.com/gohugoio/hugo/releases/download/v0.86.0/hugo_0.86.0_Linux-64bit.tar.gz" -O "hugo.tar.gz"
         tar -xzf hugo.tar.gz
         ./hugo
     
