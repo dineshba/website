@@ -5,7 +5,15 @@ date: 2021-07-29T16:12:28+05:30
 
 Recently I encountered a problem with the **terraform code that I have written**. It created a **deadlock between resources**.
 
-#### Example:
+- [Example](#example)
+- [Problem](#problem)
+- [Solutions: (I came cross)](#solutions-i-came-cross)
+  * [Best/Easy/Final Solution](#besteasyfinal-solution)
+  * [Okay Solution](#okay-solution)
+  * [Worst Solution](#worst-solution)
+- [References](#references)
+
+#### Example
 
 ```hcl
 resource "google_compute_instance_template" "instance_template" {
@@ -17,8 +25,10 @@ resource "google_compute_instance_group_manager" "igm" {
   }
 }
 ```
+> Note: resource `google_compute_instance_group_manager` dependson resource `google_compute_instance_template`
 
-Whenever there is a change in config of `google_compute_instance_template`, terraform will delete and create it freshly as `google_compute_instance_template` is immutable resource.
+#### Problem
+Whenever there is a change in config of `google_compute_instance_template`, terraform will delete and create it freshly (as `google_compute_instance_template` is immutable resource)
 
 So plan will show something like this
 ```sh
@@ -91,3 +101,8 @@ terraform apply $@
 
 - Append the `google_compute_instance_template` name suffix to depend resource's name (in this case, `google_compute_instance_group_manager`)
 - This will recreate the all dependent resources whenever there is a change in `google_compute_instance_template`. Very destructive solution 🤮🤯😵‍💫
+
+#### References
+- https://www.terraform.io/docs/language/meta-arguments/lifecycle.html#create_before_destroy
+- https://github.com/hashicorp/terraform/issues/6234#event-2551997957
+- https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance_template#using-with-instance-group-manager
