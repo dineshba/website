@@ -7,10 +7,7 @@ Recently I encountered a problem with the **terraform code that I have written**
 
 - [Example](#example)
 - [Problem](#problem)
-- [Solutions: (I came cross)](#solutions-i-came-cross)
-  * [Best/Easy/Final Solution](#besteasyfinal-solution)
-  * [Okay Solution](#okay-solution)
-  * [Worst Solution](#worst-solution)
+- [Solutions](#solutions-i-came-cross-in-below-order)
 - [References](#references)
 
 #### Example
