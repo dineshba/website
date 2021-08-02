@@ -43,7 +43,7 @@ During apply, it will **first delete** google_compute_instance_template, then cr
 
 While trying to delete, it will fail saying it is already in use by `google_compute_instance_group_manager`
 
-#### Solutions: (I came cross)
+#### Solutions: (I came cross in reverse order)
 - [Best/Easy/Final Solution](#besteasyfinal-solution)
 - [Okay Solution](#okay-solution)
 - [Worst Solution](#worst-solution)
