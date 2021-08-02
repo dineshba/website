@@ -43,27 +43,39 @@ During apply, it will **first delete** google_compute_instance_template, then cr
 
 While trying to delete, it will fail saying it is already in use by `google_compute_instance_group_manager`
 
-#### Solutions: (I came cross in reverse order)
-- [Best/Easy/Final Solution](#besteasyfinal-solution)
-- [Okay Solution](#okay-solution)
+#### Solutions: (I came cross in below order)
 - [Worst Solution](#worst-solution)
+- [Okay Solution](#okay-solution)
+- [Best/Easy/Final Solution](#besteasyfinal-solution)
 
-##### Best/Easy/Final Solution
+> Note: Use best solution only. Other solutions are just for learning purpose
 
-Use `create_before_destroy` lifecycle meta-argument for `google_compute_instance_template` like
+##### Worst Solution
+
+- Append the `google_compute_instance_template` name to depend resource's name (in this case, `google_compute_instance_group_manager`)
+
 ```hcl
 resource "google_compute_instance_template" "instance_template" {
-    lifecycle {
-        create_before_destroy = true
-    }
+  name_prefix = "my-template"
+  # while create it will append some random numbers to the end
+  # In this way, whenever it is recreated, name will be changed.
+}
+
+resource "google_compute_instance_group_manager" "igm" {
+  name = "igm-${google_compute_instance_template.instance_template.id}"
+  # whenever google_compute_instance_template changes, it will
+  # recreate, which means name will change, which means name of
+  # this resource will change. This way, we are forcing to
+  # recreate this resource, whenever google_compute_instance_template
+  # recreated
+  version {
+    instance_template = google_compute_instance_template.instance_template.id
+  }
 }
 ```
-
-During apply, it will **first create** new google_compute_instance_template, then change google_compute_instance_group_manager (and all other resources which depends on it) and then finally delete the old google_compute_instance_template
+- This will recreate the all dependent resources whenever there is a change in `google_compute_instance_template`. Very destructive solution 🤮🤯😵‍💫
 
 ##### Okay Solution
-
-> Note: Use best solution only. This solution is just for learning purpose
 
 Whenever there is a change in `google_compute_instance_template` resource in terraform, follow below steps:
 - Remove `google_compute_instance_template` state from tfstate
@@ -95,12 +107,18 @@ terraform apply $@
 # curl/gcloud command to remove the old google_compute_instance_template
 ```
 
-##### Worst Solution
+##### Best/Easy/Final Solution
 
-> Note: Use best solution only. This solution is just for learning purpose
+Use `create_before_destroy` lifecycle meta-argument for `google_compute_instance_template` like
+```hcl
+resource "google_compute_instance_template" "instance_template" {
+    lifecycle {
+        create_before_destroy = true
+    }
+}
+```
 
-- Append the `google_compute_instance_template` name suffix to depend resource's name (in this case, `google_compute_instance_group_manager`)
-- This will recreate the all dependent resources whenever there is a change in `google_compute_instance_template`. Very destructive solution 🤮🤯😵‍💫
+During apply, it will **first create** new google_compute_instance_template, then change google_compute_instance_group_manager (and all other resources which depends on it) and then finally delete the old google_compute_instance_template
 
 #### References
 - https://www.terraform.io/docs/language/meta-arguments/lifecycle.html#create_before_destroy
