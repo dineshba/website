@@ -40,7 +40,7 @@ During apply, it will **first delete** google_compute_instance_template, then cr
 
 While trying to delete, it will fail saying it is already in use by `google_compute_instance_group_manager`
 
-#### Solutions: (I came cross in below order)
+#### Solutions: (I came across in below order)
 - [Worst Solution](#worst-solution)
 - [Okay Solution](#okay-solution)
 - [Best/Easy/Final Solution](#besteasyfinal-solution)
@@ -49,7 +49,7 @@ While trying to delete, it will fail saying it is already in use by `google_comp
 
 ##### Worst Solution
 
-- Append the `google_compute_instance_template` name to depend resource's name (in this case, `google_compute_instance_group_manager`)
+- Use name of `google_compute_instance_template` in name of the dependent resources (in this case, `google_compute_instance_group_manager`)
 
 ```hcl
 resource "google_compute_instance_template" "instance_template" {
