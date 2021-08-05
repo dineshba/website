@@ -5,6 +5,10 @@ date: 2019-08-27T20:05:50+05:30
 
 `Recent Top`
 
+- [Deploying application securely using Hashicorp Vault](https://youtu.be/fId-08IV5c8)
+
+      Secret Management becomes tedious while dealing with a lot of users/applications. Let's try to deploy a sample application using Jenkins CI/CD to Kubernetes cluster with Hashicorp vault and understand how vault is able to solve it seamlessly.
+
 - [Power of Hashicorp Vault and it's internal](https://www.youtube.com/watch?v=NtouFbuIJ0Y)
 
       As we are started moving all our infra to cloud,secret management for the applications and also for the developers/infra admin is the challenging task. This talk will discuss about how Vault solves this problem and also lets understand the reasons behind the architecture of vault.
