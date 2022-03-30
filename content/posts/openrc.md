@@ -26,7 +26,6 @@ $ cat /usr/local/bin/openrc
 #!/usr/bin/env bash
 
 gitUrl=$(git open -p)
-fileContent=$gitUrl
 file=".openrc"
 if [ -f "$file" ]
 then
