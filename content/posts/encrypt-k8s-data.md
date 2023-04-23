@@ -26,13 +26,11 @@ resources:
           keys:
             - name: key1
               secret: c2VjcmV0IGlzIHNlY3VyZQ==
-            - name: key2
-              secret: dGhpcyBpcyBwYXNzd29yZA==
       - identity: {}
 ```              
 
 > We are using standard methods (like aesgcm) and static keys in above example
-
+> `identity: {}` is very important if you already have a secret before configuring encryption. Details in next section
 
 ## Key points to note
 - Only first provider is used for encryption
@@ -64,13 +62,10 @@ And your kms provider should create the `unix:///var/run/kmsPlugin.sock` file an
 
 ```sh
 # list keys in etcd
-kubectl exec -it -n kube-system <etcd-pod> -- sh
-
-# list keys
-ETCDCTL_API=3 etcdctl --endpoints 127.0.0.1:2379 --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt --key /etc/kubernetes/pki/etcd/server.key get / --prefix --keys-only
+kubectl exec -it -n kube-system <etcd-pod> -- sh -c "ETCDCTL_API=3 etcdctl --endpoints 127.0.0.1:2379 --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt --key /etc/kubernetes/pki/etcd/server.key get / --prefix --keys-only"
 
 # show one key's value
-ETCDCTL_API=3 etcdctl --endpoints 127.0.0.1:2379 --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt --key /etc/kubernetes/pki/etcd/server.key get /registry/secrets/<namespace>/<secret-name>
+kubectl exec -it -n kube-system <etcd-pod> -- sh -c "ETCDCTL_API=3 etcdctl --endpoints 127.0.0.1:2379 --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt --key /etc/kubernetes/pki/etcd/server.key get /registry/secrets/<namespace>/<secret-name>"
 # it should show as encrypted data. If it shows data in readable form, encryption at rest is not configured properly
 ```
 
