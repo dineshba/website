@@ -13,6 +13,5 @@ disqusShortname = "https-dineshba-github-io"
       {Name = "My Talks", URL = "/talks"},
       {Name = "Github", URL = "https://github.com/dineshba/"},
       {Name = "LinkedIn", URL = "https://www.linkedin.com/in/dineshba/"},
-      {Name = "Stackoverflow", URL = "https://stackoverflow.com/users/5305962/dinesh-balasubramanian"},
-      {Name = "Thoughtworks", URL= "https://www.thoughtworks.com/profiles/dinesh-b"}
+      {Name = "Stackoverflow", URL = "https://stackoverflow.com/users/5305962/dinesh-balasubramanian"}
       ]
