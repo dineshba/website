@@ -3,9 +3,9 @@ title: "Encrypt Kubernetes data at rest"
 date: 2023-04-22T13:32:13+05:30
 ---
 
-## Encrypt Kubernetes data at rest:
+Kubernetes stores all of its data in etcd. Apiserver is the one component which reads and writes data into etcd.
 
-Kubernetes stores all of its data in etcd. Apiserver is the one which reads and writes data into etcd.
+![k8s-cluster.png](/k8s-cluster.png)
 
 So, before storing data into etcd, we can ask apiserver to encrypt the data and while it retrieve data from etcd, we can ask apiserver to decrypt the data.
 
@@ -33,16 +33,24 @@ resources:
 > We are using standard methods (like aesgcm) and static keys in above example
 > `identity: {}` is very important if you already have a secret before configuring encryption. Details in next section
 
+- Complete example file: https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#providers
+- Available providers: https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#providers
+
+
 ## Key points to note
 - Only first provider is used for encryption
 - Each provider will be used to attempt for decryption until success
 - If no provider can read the stored data due to a mismatch in format or secret key, we can see error in api-server `failed to list *core.Secret: unable to transform key "/registry/secrets/<namespace>/<secret-name>"`
+- If we lost the encryption key, only option is to delete the key directly in etcd
 
-> Note: Without having each provider to attempt decryption, we cannot achieve key rotation and we cannot change from one method encryption to another.
+> Note: Without having each provider to attempt decryption, we cannot achieve key rotation and we cannot change from one encryption method to another.
 ## External Key Management Service
-Instead of using static keys and static method, we can use external key management service (KMS). We can use any service as KMS if it exposes grpc methods with signature defined in https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/#developing-a-kms-plugin-grpc-server 
 
-### Sample config for KMS provider
+Encrypting secret data with a locally managed key protects against an etcd compromise, but it fails to protect against a host compromise.
+
+Instead of using local keys, we can use external key management service (KMS). We can use any service as KMS if it expose grpc methods with signature defined in https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/#developing-a-kms-plugin-grpc-server
+
+#### Sample config using KMS provider
 
 ```yaml
 apiVersion: v1
@@ -58,6 +66,11 @@ resources:
 ```
 
 And your kms provider should create the `unix:///var/run/kmsPlugin.sock` file and expose methods to encrypt/decrypt
+
+#### Example KMS providers
+- https://github.com/Azure/kubernetes-kms
+- https://github.com/GoogleCloudPlatform/k8s-cloudkms-plugin
+- https://github.com/kubernetes-sigs/aws-encryption-provider
 
 ## Test the encryption
 
