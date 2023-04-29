@@ -1,6 +1,6 @@
 baseURL = "https://dineshba.github.io/"
 languageCode = "en-us"
-title = "Dinesh's Blog"
+title = "Dinesh Tech Bytes"
 theme = "hyde"
 googleAnalytics = "UA-146789724-1"
 disqusShortname = "https-dineshba-github-io"
@@ -13,5 +13,6 @@ disqusShortname = "https-dineshba-github-io"
       {Name = "My Talks", URL = "/talks"},
       {Name = "Github", URL = "https://github.com/dineshba/"},
       {Name = "LinkedIn", URL = "https://www.linkedin.com/in/dineshba/"},
-      {Name = "Stackoverflow", URL = "https://stackoverflow.com/users/5305962/dinesh-balasubramanian"}
+      {Name = "Stackoverflow", URL = "https://stackoverflow.com/users/5305962/dinesh-balasubramanian"},
+      {Name = "Youtube", URL= "https://www.youtube.com/@dineshtechbytes"}
       ]

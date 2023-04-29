@@ -12,6 +12,7 @@ So, before storing data into etcd, we can ask apiserver to encrypt the data and 
 When we start api-server, we have to provide the encryption config with below flag:
 ```yaml
 --encryption-provider-config=/etc/kubernetes/encryptionconfig.yaml
+# --encryption-provider-config-automatic-reload=true # optional
 ```
 
 ### Sample encryptionconfig.yaml
