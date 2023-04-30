@@ -3,6 +3,10 @@ title: "Encrypt Kubernetes data at rest"
 date: 2023-04-22T13:32:13+05:30
 ---
 
+{{< youtube nzdTnF7MtgA >}}
+
+### Notes/Snippets used in the video:
+
 Kubernetes stores all of its data in etcd. Apiserver is the only component which reads and writes data into etcd.
 
 ![k8s-cluster.png](/k8s-cluster.png)
