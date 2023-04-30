@@ -32,7 +32,7 @@ resources:
       - identity: {}
 ```              
 
-- Complete example file: https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#providers
+- Complete example file: https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#understanding-the-encryption-at-rest-configuration
 - Available providers: https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#providers
 
 > We are using standard method aesgcm and static keys in above example
@@ -51,6 +51,18 @@ resources:
 Encrypting secret data with a locally managed key protects against an etcd compromise, but it fails to protect against a host compromise.
 
 Instead of using local keys, we can use external key management service (KMS).
+
+Almost each cloud provider is their own KMS solution.
+#### Example Key Management Service:
+- https://learn.microsoft.com/en-us/azure/key-vault/general/
+- https://cloud.google.com/security-key-management
+- https://docs.aws.amazon.com/kms/latest/developerguide/overview.html
+
+If we want to use it api-server, then api-server should know
+- How to authenticate against this cloud ?
+- How to interact with this encrypt/decrypt API ?
+
+So, if we put this logic in api-server, it will not scale. So kubernetes/kubernetes-community provides a **common interface and anybody who adhers to it can act as KMS provider for api-server**. https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/#enabling-the-kms-supported-by-your-cloud-provider
 
 #### Example KMS providers
 - https://github.com/Azure/kubernetes-kms
