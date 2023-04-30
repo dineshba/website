@@ -52,11 +52,11 @@ resources:
 > Note: Without having each provider to attempt decryption, we cannot achieve key rotation and we cannot change from one encryption method to another.
 ## External Key Management Service
 
-Encrypting secret data with a locally managed key protects against an etcd compromise, but it fails to protect against a host compromise.
+Encrypting secret data with a locally managed key protects against an etcd compromise, **but it fails to protect against a host compromise**.
 
 Instead of using local keys, we can use external key management service (KMS).
 
-Almost each cloud provider is their own KMS solution.
+Almost each cloud-provider is providing their own KMS solution.
 #### Example Key Management Service:
 - https://learn.microsoft.com/en-us/azure/key-vault/general/
 - https://cloud.google.com/security-key-management
